@@ -2,7 +2,11 @@
 <h1>Home</h1>
 <p><%= uvodniSadrzaj %></p>
 
-<% contentSadrzaj.forEach (post => console.log(post.title)) %>
-   
-  
+<% for (var i=0; i<contentSadrzaj.length; i++){  %>
+    <!-- MORA [i] da se nalazi na poziciji, NECE RADITI KOD!!!! -->
+    <H1><%= contentSadrzaj[i].title %></H1>
+    <p><%= contentSadrzaj[i].post %></p>
+<%}%>
+    
+
 <%- include("partials/footer")  -%>

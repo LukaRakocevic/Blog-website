@@ -24,8 +24,7 @@ app.get("/", function(req, res){
     res.render("home", {
       uvodniSadrzaj: homeStartingContent, 
       contentSadrzaj: posts});
-    
-});
+          });
 
 app.get("/about", function(req, res){
   res.render("about", {onamaSadrzaj: aboutContent});
@@ -41,19 +40,32 @@ app.get("/compose", function(req, res){
 
 app.post("/compose", function(req, res){
  
-  var newLog = {
+  const newLog = {
+
     title:req.body.postTitle,
     post:req.body.postBody
   };
   posts.push(newLog);
 
-  res.redirect("/");
-
-
-  
+  res.redirect("/"); 
 });
 
+app.get("/posts/:postName", function(req, res){
+  
+  const requestedTitle = req.params.postName;
+  
+  posts.forEach(function(newLog){
+    const storedTitle = newLog.title;
 
+    if (storedTitle === requestedTitle){
+      console.log ("Match found!");
+    } else {
+      console.log("Error!");
+    }
+  });
+
+
+});
 
 
 app.listen(3000, function() {
